@@ -39,8 +39,11 @@ class StudentController {
     async update(req, res) {
         const { id } = req.params;
         const student = await Student.find(id);
+        
+        console.log(student[0]);
 
-        if (student) {
+
+        if (student[0]) {
             const student = await Student.update(id, req.body);
             const data = {
                 message: "Mengedit data student", 
@@ -61,7 +64,7 @@ class StudentController {
         const { id } = req.params;
         const student = await Student.find(id);
 
-        if (student) {
+        if (student[0]) {
             await Student.delete(id);
             const data = {
                 message: "Menghapus data student",
@@ -82,7 +85,7 @@ class StudentController {
         const { id } = req.params;
         const student = await Student.find(id);
 
-        if (student) {
+        if (student[0]) {
             const data = {
                 message: "Menampilkan detail students",
                 data: student,
